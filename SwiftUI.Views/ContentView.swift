@@ -54,10 +54,7 @@ struct HeaderView: View {
                 Text("Harvard University")
                 Text("Extension School")
             }
-            
-
         }
-        
     }
 }
 
@@ -65,6 +62,12 @@ struct HeaderView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-        HeaderView()
+        // add this group container to see the view on multiple devices.
+        Group {
+            HeaderView().previewInterfaceOrientation(.landscapeLeft)
+            HeaderView().preferredColorScheme(.dark).previewInterfaceOrientation(.landscapeRight)
+            HeaderView().previewDevice(.init(rawValue: "iPad mini (6th generation)"))
+
+        }
     }
 }
