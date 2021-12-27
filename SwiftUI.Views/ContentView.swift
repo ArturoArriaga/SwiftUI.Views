@@ -20,20 +20,21 @@ struct ContentView: View {
                 .frame(minWidth: 200)
                 .foregroundColor(Color.orange)
                 .background(Color.black)
+                .cornerRadius(30)
             Text("Austin, Texas")
                 .foregroundColor(Color.black)
                 .fontWeight(.thin)
                 .font(.title3)
                 .background(Color.orange)
+                .cornerRadius(28)
             
-            HStack{
+            HStack {
                 Text("Harvard Extension School")
-                    .foregroundColor(Color.red)
-                    .fontWeight(.medium)
                 Text("2021")
-                    .foregroundColor(Color.red)
-                    .fontWeight(.medium)
-            }
+            }.foregroundColor(Color.red).font(.title3)
+                .padding()
+                .background(RoundedRectangle(cornerRadius: 42)
+                                .foregroundColor(Color.black))
             
             Image("harvard.svg")
                 .resizable()
@@ -43,8 +44,27 @@ struct ContentView: View {
     }
 }
 
+struct HeaderView: View {
+    var body: some View {
+        VStack {
+            Text("Arturo Arriaga").font(.title)
+            Text("Software Engineer").font(.caption2)
+            Text("Austin, Texas")
+            HStack {
+                Text("Harvard University")
+                Text("Extension School")
+            }
+            
+
+        }
+        
+    }
+}
+
+
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+        HeaderView()
     }
 }
