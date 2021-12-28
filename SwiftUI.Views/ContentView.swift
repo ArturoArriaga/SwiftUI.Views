@@ -29,7 +29,7 @@ struct ContentView: View {
                 .cornerRadius(28)
             
             HStack {
-                Text("Harvard Extension School")
+                Text("Harvard University")
                 Text("2021")
             }.foregroundColor(Color.red).font(.title3)
                 .padding()
@@ -38,6 +38,7 @@ struct ContentView: View {
             
             Image("harvard.svg")
                 .resizable()
+                .frame(width: 200, height: 200, alignment: .center)
             
         }
 
@@ -59,15 +60,53 @@ struct HeaderView: View {
 }
 
 
+struct Vstack_Nesting : View {
+    let s: CGFloat = 15
+    var body: some View {
+        VStack(alignment: .leading, spacing: s) {
+            Text("Arturo Arriaga")
+                .font(.largeTitle)
+                .fontWeight(.heavy)
+                .frame(maxWidth: .infinity)
+                .background(Color.blue)
+            
+            VStack {
+                Text("A Vstack inside of another vstack")
+                Divider()
+                Text("Why is this neccessary?")
+                Divider()
+                Text("Because Vstacks are only allowed 10 views")
+            }
+            .padding()
+            .foregroundColor(Color.white)
+            .background(
+                RoundedRectangle(cornerRadius: 10)
+                    .foregroundColor(.blue))
+            .padding()
+            
+            VStack(alignment: .leading) {
+                Text("December 2021")
+            }
+            .padding()
+            .foregroundColor(.white)
+            .background(RoundedRectangle(cornerRadius: 10).foregroundColor(.blue)).padding()
+        }
+    }
+}
+
+
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+//        ContentView()
+        
+        Vstack_Nesting()
+        
         // add this group container to see the view on multiple devices.
-        Group {
-            HeaderView().previewInterfaceOrientation(.landscapeLeft)
-            HeaderView().preferredColorScheme(.dark).previewInterfaceOrientation(.landscapeRight)
-            HeaderView().previewDevice(.init(rawValue: "iPad mini (6th generation)"))
-
-        }
+//        Group {
+//            HeaderView().previewInterfaceOrientation(.landscapeLeft)
+//            HeaderView().preferredColorScheme(.dark).previewInterfaceOrientation(.landscapeRight)
+//            HeaderView().previewDevice(.init(rawValue: "iPad mini (6th generation)"))
+//
+//        }
     }
 }
