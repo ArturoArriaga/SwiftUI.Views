@@ -95,12 +95,26 @@ struct Vstack_Nesting : View {
 }
 
 
+struct Lazy_Vstack: View {
+    var body: some View {
+        VStack(spacing: 20) {
+            Text("Arturo Arriaga")
+            
+            Text("Lazy V Stack")
+            LazyVStack(spacing: 10) {
+                Image(systemName: "1.circle")
+                Image(systemName: "2.circle")
+                Image(systemName: "3.circle")
+            }.border(Color.red, width: 2)
+        }.font(.title)
+        
+    }
+}
+
+
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
 //        ContentView()
-        
-        Vstack_Nesting()
-        
         // add this group container to see the view on multiple devices.
 //        Group {
 //            HeaderView().previewInterfaceOrientation(.landscapeLeft)
@@ -108,5 +122,9 @@ struct ContentView_Previews: PreviewProvider {
 //            HeaderView().previewDevice(.init(rawValue: "iPad mini (6th generation)"))
 //
 //        }
+        
+//        Vstack_Nesting()
+
+        Lazy_Vstack()
     }
 }
